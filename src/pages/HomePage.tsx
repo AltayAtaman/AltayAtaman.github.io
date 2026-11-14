@@ -45,9 +45,14 @@ interface HomePageProps {
   lang: Language;
   toggleLang: () => void;
   latency?: number;
+  disableKeyboardNav?: boolean;
 }
 
-export default function HomePage({ lang, toggleLang }: HomePageProps) {
+export default function HomePage({
+  lang,
+  toggleLang,
+  disableKeyboardNav = false,
+}: HomePageProps) {
   const [copied, setCopied] = useState(false);
   const [contactCopied, setContactCopied] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -135,6 +140,8 @@ export default function HomePage({ lang, toggleLang }: HomePageProps) {
 
   // Keyboard navigation for presentation slides: Left / Right arrows
   useEffect(() => {
+    if (disableKeyboardNav) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (['ArrowRight', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
@@ -153,7 +160,7 @@ export default function HomePage({ lang, toggleLang }: HomePageProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeSlide, scrollToSlide, totalSlides]);
+  }, [activeSlide, scrollToSlide, totalSlides, disableKeyboardNav]);
 
   const handleCopyHeroEmail = () => {
     navigator.clipboard.writeText('i.altay.ataman@gmail.com');

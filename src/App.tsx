@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import WelcomePage from './components/WelcomePage';
 import { Language } from './translations';
 
 function ScrollToTop() {
@@ -11,6 +12,57 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+interface PortfolioEntryProps {
+  lang: Language;
+  toggleLang: () => void;
+  latency: number;
+}
+
+function PortfolioEntry({ lang, toggleLang, latency }: PortfolioEntryProps) {
+  const [welcomeDismissed, setWelcomeDismissed] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? Boolean(window.location.hash) : false,
+  );
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        setIsTransitioning(false);
+        setWelcomeDismissed(true);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const showHomePage = welcomeDismissed || isTransitioning;
+
+  return (
+    <>
+      {showHomePage && (
+        <HomePage
+          lang={lang}
+          toggleLang={toggleLang}
+          latency={latency}
+          disableKeyboardNav={!welcomeDismissed}
+        />
+      )}
+      {!welcomeDismissed && (
+        <WelcomePage
+          lang={lang}
+          toggleLang={toggleLang}
+          onStartTransition={() => setIsTransitioning(true)}
+          onComplete={() => {
+            setWelcomeDismissed(true);
+            setIsTransitioning(false);
+          }}
+        />
+      )}
+    </>
+  );
 }
 
 export default function App() {
@@ -37,13 +89,13 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route 
-          path="/" 
-          element={<HomePage lang={lang} toggleLang={toggleLang} latency={latency} />} 
+        <Route
+          path="/"
+          element={<PortfolioEntry lang={lang} toggleLang={toggleLang} latency={latency} />}
         />
-        <Route 
-          path="*" 
-          element={<HomePage lang={lang} toggleLang={toggleLang} latency={latency} />} 
+        <Route
+          path="*"
+          element={<PortfolioEntry lang={lang} toggleLang={toggleLang} latency={latency} />}
         />
       </Routes>
     </BrowserRouter>

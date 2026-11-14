@@ -16,6 +16,7 @@ export default {
         'accent-subtle': 'rgba(245, 158, 11, 0.12)',
       },
       fontFamily: {
+        display: ['Outfit', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['JetBrains Mono', 'Menlo', 'monospace'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },

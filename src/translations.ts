@@ -15,6 +15,14 @@ export interface ProjectSlide {
 
 export const translations = {
   en: {
+    welcome: {
+      name: "Ismail Altay Ataman",
+      role: "Software Engineer — IoT, Embedded & Full-Stack Systems",
+      taglinePrefix: "Let's build ",
+      taglineHighlight: "reliable systems",
+      taglineSuffix: " together.",
+      cta: "Check Portfolio",
+    },
     nav: {
       contact: "Contact",
       status: "Available for new projects",
@@ -89,6 +97,14 @@ export const translations = {
     }
   },
   tr: {
+    welcome: {
+      name: "Ismail Altay Ataman",
+      role: "Yazılım Mühendisi — IoT, Gömülü Sistemler ve Full-Stack",
+      taglinePrefix: "Birlikte ",
+      taglineHighlight: "güvenilir sistemler",
+      taglineSuffix: " inşa edelim.",
+      cta: "Portfolyoyu İncele",
+    },
     nav: {
       contact: "İletişim",
       status: "Yeni Projelere Açık",
