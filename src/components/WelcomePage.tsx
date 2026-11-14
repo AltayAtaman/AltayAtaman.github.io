@@ -107,7 +107,7 @@ export default function WelcomePage({
             {t.welcome.taglineSuffix}
           </p>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col items-center gap-4">
             <button
               type="button"
               onClick={handleProceed}
@@ -117,6 +117,35 @@ export default function WelcomePage({
               <span>{t.welcome.cta}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
+
+            <div className="flex items-center justify-center gap-3 pt-1 text-xs font-mono text-zinc-400">
+              <a
+                href={t.hero.cvFile}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-amber-400 transition-colors"
+              >
+                {t.hero.cvBtn}
+              </a>
+              <span className="text-zinc-700">·</span>
+              <a
+                href="https://github.com/AltayAtaman"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-amber-400 transition-colors"
+              >
+                GitHub
+              </a>
+              <span className="text-zinc-700">·</span>
+              <a
+                href={t.hero.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-amber-400 transition-colors"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
       </main>

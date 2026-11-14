@@ -62,7 +62,7 @@ export default function Footer({ lang }: { lang: Language }) {
         </a>
 
         <a 
-          href="https://linkedin.com/in/ismailaltayataman" 
+          href={t.hero.linkedinUrl} 
           target="_blank" 
           rel="noreferrer"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-mono text-xs border border-zinc-800 transition-colors"

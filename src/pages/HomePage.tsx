@@ -356,7 +356,7 @@ export default function HomePage({
                   <GithubIcon className="w-4 h-4" />
                 </a>
                 <a 
-                  href="https://linkedin.com/in/ismailaltayataman" 
+                  href={t.hero.linkedinUrl} 
                   target="_blank" 
                   rel="noreferrer" 
                   aria-label="LinkedIn - ismailaltayataman"
@@ -653,6 +653,16 @@ export default function HomePage({
                 <span>{contactCopied ? t.contact.emailCopiedNotice : t.contact.copyEmail}</span>
               </button>
 
+              <a
+                href={t.hero.cvFile}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-200 font-mono text-xs border border-zinc-800 hover:border-amber-500/40 transition-colors"
+              >
+                <FileDown className="w-4 h-4 text-amber-400" />
+                <span>{t.hero.cvBtn}</span>
+              </a>
+
               <a 
                 href="https://github.com/AltayAtaman" 
                 target="_blank" 
@@ -664,7 +674,7 @@ export default function HomePage({
               </a>
 
               <a 
-                href="https://linkedin.com/in/ismailaltayataman" 
+                href={t.hero.linkedinUrl} 
                 target="_blank" 
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-mono text-xs border border-zinc-800 transition-colors"
