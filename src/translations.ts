@@ -29,9 +29,47 @@ export const translations = {
       projects: "yiy.io",
       slides: {
         intro: "Overview",
+        experience: "Experience",
         projects: "Projects",
         contact: "Contact",
       }
+    },
+    experience: {
+      tag: "Work Experience",
+      spanLabel: "2022 – 2026",
+      featured: {
+        role: "Embedded and IoT Solutions Engineer",
+        company: "Stealth Mobility Startup (US)",
+        period: "Oct 2023 – Aug 2026",
+        highlights: [
+          "Architected scalable telemetry on AWS IoT Core & Azure IoT Hub with automated Fleet Provisioning.",
+          "Developed C++ cellular IoT firmware with fail-safe OTA pipelines, reducing on-site maintenance.",
+          "Designed a custom multi-node CAN Bus 2.0B protocol across motor controllers, IoT gateway, and SBC HMI.",
+          "Built cross-platform Flutter HMI & diagnostic tools on Embedded Linux (Rockchip RK3562).",
+        ],
+        tech: ["C++", "CAN Bus 2.0B", "AWS IoT Core", "Azure IoT Hub", "Embedded Linux", "Flutter", "OTA"],
+      },
+      internshipsLabel: "Engineering Internships",
+      internships: [
+        {
+          company: "Baykar Technologies",
+          role: "Intern Engineer",
+          period: "Jul – Aug 2023",
+          summary: "Automated UAV ground-station mission-control regression tests with Winium.",
+        },
+        {
+          company: "DeltaV Space Technologies",
+          role: "Intern Engineer",
+          period: "Jan – Feb 2023",
+          summary: "Designed & tuned discrete PID controllers for a 3-axis reaction wheel assembly.",
+        },
+        {
+          company: "TÜBİTAK SAGE",
+          role: "Intern Engineer",
+          period: "Aug – Sep 2022",
+          summary: "Built operator GUIs for embedded defense systems using Qt and C++.",
+        },
+      ],
     },
     hero: {
       badge: "Software Engineer — IoT, Embedded & Full-Stack Systems",
@@ -41,9 +79,9 @@ export const translations = {
       cloud: "cloud",
       headlineSuffix: ".",
       bio: "Software Engineer with 3 years of professional experience building IoT architectures, multi-node CAN bus protocols, cellular fail-safe OTA pipelines, and production-grade full-stack applications. Mechatronics Engineering graduate from Yildiz Technical University.",
-      skills: ["C / C++", "ESP-IDF & STM32", "FreeRTOS", "CAN Bus & MQTT", "AWS / Azure IoT", "Node.js & React", "Embedded Linux"],
+      skills: ["C / C++", "ESP-IDF & STM32", "FreeRTOS", "CAN Bus & MQTT", "Embedded Linux", "AWS & Azure IoT", "Flutter & TypeScript", "Python & Node.js"],
       cta: "Get in Touch",
-      cvBtn: "Download CV",
+      cvBtn: "Download Resume",
       cvFile: "/ismail_altay_ataman_cv.pdf",
       emailBtn: "Email",
       emailCopied: "Copied!",
@@ -67,7 +105,7 @@ export const translations = {
         tech: ["Node.js", "SQLite", "React 18", "Flutter", "WebSocket LAN", "ESC/POS", "Electron"],
         metrics: [
           { label: "Sync Latency", value: "<5ms (LAN)" },
-          { label: "Cloud Dependency", value: "0% Required" },
+          { label: "Cloud Dependency", value: "None Required" },
           { label: "Deployment", value: "Standalone .exe" },
         ],
         externalUrl: "https://AltayAtaman.github.io/yiy-io/",
@@ -111,9 +149,47 @@ export const translations = {
       projects: "yiy.io",
       slides: {
         intro: "Giriş",
+        experience: "Deneyim",
         projects: "Projeler",
         contact: "İletişim",
       }
+    },
+    experience: {
+      tag: "İş Deneyimi",
+      spanLabel: "2022 – 2026",
+      featured: {
+        role: "Gömülü ve IoT Çözüm Mühendisi",
+        company: "Stealth Mobilite Girişimi (ABD)",
+        period: "Eki 2023 – Ağu 2026",
+        highlights: [
+          "AWS IoT Core ve Azure IoT Hub üzerinde otomatik filo provizyonlu ölçeklenebilir telemetri altyapıları kurdu.",
+          "Hücresel IoT cihazları için C++ firmware ve saha bakımını azaltan fail-safe OTA güncelleme altyapısı geliştirdi.",
+          "Motor sürücüleri, IoT ağ geçidi ve SBC HMI arasında çok düğümlü özel CAN Bus 2.0B protokolü tasarladı.",
+          "Gömülü Linux (Rockchip RK3562) üzerinde çalışan Flutter tabanlı HMI ve tanı araçları geliştirdi.",
+        ],
+        tech: ["C++", "CAN Bus 2.0B", "AWS IoT Core", "Azure IoT Hub", "Gömülü Linux", "Flutter", "OTA"],
+      },
+      internshipsLabel: "Mühendislik Stajları",
+      internships: [
+        {
+          company: "Baykar Teknoloji",
+          role: "Stajyer Mühendis",
+          period: "Tem – Ağu 2023",
+          summary: "İHA yer kontrol istasyonu yazılımları için Winium ile otomatik test senaryoları geliştirdi.",
+        },
+        {
+          company: "DeltaV Uzay Teknolojileri",
+          role: "Stajyer Mühendis",
+          period: "Oca – Şub 2023",
+          summary: "3 eksenli reaksiyon tekeri sistemi için ayrık PID kontrol algoritmaları tasarlayıp optimize etti.",
+        },
+        {
+          company: "TÜBİTAK SAGE",
+          role: "Stajyer Mühendis",
+          period: "Ağu – Eyl 2022",
+          summary: "Savunma sanayii gömülü sistemleri için Qt ve C++ ile operatör arayüzleri geliştirdi.",
+        },
+      ],
     },
     hero: {
       badge: "Yazılım Mühendisi — IoT, Gömülü Sistemler ve Full-Stack",
@@ -123,7 +199,7 @@ export const translations = {
       cloud: "buluta",
       headlineSuffix: " inşa ediyorum.",
       bio: "IoT mimarileri, çok düğümlü CAN bus protokolleri, hücresel OTA güncellemeleri ve sahaya hazır uçtan uca uygulamalar geliştiren, 3 yıl profesyonel deneyime sahip Yazılım Mühendisi. Yıldız Teknik Üniversitesi Mekatronik Mühendisliği mezunu.",
-      skills: ["C / C++", "ESP-IDF & STM32", "FreeRTOS", "CAN Bus & MQTT", "AWS / Azure IoT", "Node.js & React", "Gömülü Linux"],
+      skills: ["C / C++", "ESP-IDF & STM32", "FreeRTOS", "CAN Bus & MQTT", "Gömülü Linux", "AWS & Azure IoT", "Flutter & TypeScript", "Python & Node.js"],
       cta: "İletişime Geç",
       cvBtn: "Özgeçmişi İndir",
       cvFile: "/ismail_altay_ataman_cv_tr.pdf",
@@ -149,7 +225,7 @@ export const translations = {
         tech: ["Node.js", "SQLite", "React 18", "Flutter", "WebSocket LAN", "ESC/POS", "Electron"],
         metrics: [
           { label: "Senkronizasyon", value: "<5ms (Yerel Ağ)" },
-          { label: "Bulut Bağımlılığı", value: "%0 Zorunlu" },
+          { label: "Bulut Bağımlılığı", value: "Yok" },
           { label: "Dağıtım", value: "Taşınabilir .exe" },
         ],
         externalUrl: "https://AltayAtaman.github.io/yiy-io/",

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import GatewayFlow from "@/components/ui/gateway-flow";
+import LanguageToggle from "@/components/LanguageToggle";
 import { translations, type Language } from "@/translations";
 
 interface WelcomePageProps {
@@ -75,33 +76,7 @@ export default function WelcomePage({
 
       {/* Top minimal bar: Text-only EN/TR switcher */}
       <header className="relative z-20 w-full max-w-5xl mx-auto px-6 pt-6 flex items-center justify-end">
-        <button
-          type="button"
-          onClick={toggleLang}
-          className="inline-flex items-center gap-1.5 py-1 text-xs font-mono tracking-wider opacity-80 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded"
-          aria-label="Switch language"
-          title="Switch Language / Dil Değiştir"
-        >
-          <span
-            className={
-              lang === "en"
-                ? "text-amber-400 font-semibold"
-                : "text-zinc-500 hover:text-zinc-300 transition-colors"
-            }
-          >
-            EN
-          </span>
-          <span className="text-zinc-700">/</span>
-          <span
-            className={
-              lang === "tr"
-                ? "text-amber-400 font-semibold"
-                : "text-zinc-500 hover:text-zinc-300 transition-colors"
-            }
-          >
-            TR
-          </span>
-        </button>
+        <LanguageToggle lang={lang} toggleLang={toggleLang} />
       </header>
 
       {/* Center Gateway Content */}

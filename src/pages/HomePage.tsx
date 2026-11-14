@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import LanguageToggle from '../components/LanguageToggle';
 import NetworkBackground from '../components/NetworkBackground';
 import { 
   Mail, 
@@ -13,7 +13,8 @@ import {
   Cpu,
   Layers,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Briefcase
 } from 'lucide-react';
 import { translations, Language, ProjectSlide } from '../translations';
 
@@ -62,6 +63,7 @@ export default function HomePage({
   // Memoize slides list to prevent recreation on each render
   const slides: SlideItem[] = useMemo(() => [
     { id: 'hero', label: t.nav.slides.intro },
+    { id: 'experience', label: t.nav.slides.experience },
     ...t.projectSlides.map((p: ProjectSlide) => ({ id: `project-${p.id}`, label: p.title })),
     { id: 'contact', label: t.nav.slides.contact }
   ], [t]);
@@ -180,9 +182,11 @@ export default function HomePage({
       {/* Interactive IoT Constellation Network Background */}
       <NetworkBackground />
 
-      {/* Fixed Persistent Header */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar lang={lang} toggleLang={toggleLang} />
+      {/* Minimal Floating Language Switcher */}
+      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+        <div className="max-w-5xl mx-auto px-6 pt-6 flex justify-end">
+          <LanguageToggle lang={lang} toggleLang={toggleLang} className="pointer-events-auto" />
+        </div>
       </div>
 
       {/* Edge Navigation: Floating Left Arrow */}
@@ -276,7 +280,7 @@ export default function HomePage({
         ======================================================== */}
         <section 
           id="hero"
-          className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-20 sm:pt-24 pb-16 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
+          className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-14 pb-20 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
         >
           <div className="my-auto space-y-6 sm:space-y-8 w-full max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-xs font-mono text-zinc-400">
@@ -360,17 +364,107 @@ export default function HomePage({
         </section>
 
         {/* ========================================================
-            SLIDES 1..N: Project Slides (Modular)
+            SLIDE 1: Work Experience (Open Vertical Timeline)
+        ======================================================== */}
+        <section
+          id="experience"
+          className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-14 pb-20 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
+        >
+          <div className="my-auto w-full max-w-3xl mx-auto space-y-6 sm:space-y-7">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-xs font-mono text-zinc-400">
+              <Briefcase className="w-3.5 h-3.5 text-amber-400" />
+              <span>{t.experience.tag}</span>
+              <span className="text-zinc-600">·</span>
+              <span className="text-amber-400/90">{t.experience.spanLabel}</span>
+            </div>
+
+            {/* Vertical Timeline Rail */}
+            <div className="relative border-l border-zinc-800 ml-1.5 pl-6 sm:pl-8 space-y-7">
+              {/* Primary Role Node */}
+              <div className="relative space-y-3">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[29px] sm:-left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-amber-400 ring-4 ring-amber-400/15"
+                />
+
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      {t.experience.featured.role}
+                    </h2>
+                    <div className="text-sm font-medium text-amber-400 mt-0.5">
+                      {t.experience.featured.company}
+                    </div>
+                  </div>
+                  <span className="text-xs font-mono text-zinc-400 shrink-0">
+                    {t.experience.featured.period}
+                  </span>
+                </div>
+
+                <ul className="space-y-1.5 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+                  {t.experience.featured.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="text-amber-400/80 font-mono text-xs select-none mt-0.5">
+                        —
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-1.5 pt-1 font-mono text-[11px]">
+                  {t.experience.featured.tech.map((techItem) => (
+                    <span
+                      key={techItem}
+                      className="px-2.5 py-0.5 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300"
+                    >
+                      {techItem}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Earlier Internships Nodes */}
+              <div className="space-y-4 pt-1">
+                {t.experience.internships.map((intern) => (
+                  <div key={intern.company} className="relative space-y-1">
+                    <span
+                      aria-hidden="true"
+                      className="absolute -left-[28px] sm:-left-[36px] top-1.5 w-2 h-2 rounded-full bg-zinc-700 border border-zinc-500"
+                    />
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
+                      <div className="text-sm sm:text-base font-semibold text-zinc-200">
+                        {intern.company}
+                        <span className="text-xs font-normal text-zinc-500 ml-2">
+                          {intern.role}
+                        </span>
+                      </div>
+                      <span className="text-[11px] font-mono text-zinc-500 shrink-0">
+                        {intern.period}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                      {intern.summary}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            SLIDES 2..N: Project Slides (Modular)
         ======================================================== */}
         {t.projectSlides.map((project: ProjectSlide, pIndex: number) => {
-          const slideIndex = 1 + pIndex;
+          const slideIndex = 2 + pIndex;
           const isCurrent = activeSlide === slideIndex;
 
           return (
             <section
               key={project.id}
               id={`project-${project.id}`}
-              className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-center items-center pt-20 pb-16 px-6 sm:px-16 relative overflow-y-auto"
+              className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-center items-center pt-14 pb-20 px-6 sm:px-16 relative overflow-y-auto"
             >
               {/* Slide Card Container */}
               <div className={`relative w-full max-w-4xl rounded-2xl border bg-gradient-to-br from-zinc-900/70 via-zinc-900/40 to-zinc-950/80 p-6 sm:p-10 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-500 ${
@@ -494,7 +588,7 @@ export default function HomePage({
         ======================================================== */}
         <section 
           id="contact"
-          className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-24 pb-16 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
+          className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-14 pb-20 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
         >
           <div className="my-auto space-y-8 max-w-3xl mx-auto w-full">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-xs font-mono text-emerald-400">
