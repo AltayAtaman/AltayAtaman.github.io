@@ -10,7 +10,6 @@ import {
   FileDown,
   ChevronLeft,
   ChevronRight,
-  Cpu,
   Layers,
   Sparkles,
   ExternalLink,
@@ -370,7 +369,7 @@ export default function HomePage({
           id="experience"
           className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-14 pb-20 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
         >
-          <div className="my-auto w-full max-w-3xl mx-auto space-y-6 sm:space-y-7">
+          <div className="my-auto w-full max-w-3xl mx-auto space-y-5 sm:space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-xs font-mono text-zinc-400">
               <Briefcase className="w-3.5 h-3.5 text-amber-400" />
               <span>{t.experience.tag}</span>
@@ -379,7 +378,7 @@ export default function HomePage({
             </div>
 
             {/* Vertical Timeline Rail */}
-            <div className="relative border-l border-zinc-800 ml-1.5 pl-6 sm:pl-8 space-y-7">
+            <div className="relative border-l border-zinc-800 ml-1.5 pl-6 sm:pl-8 space-y-5">
               {/* Primary Role Node */}
               <div className="relative space-y-3">
                 <span
@@ -425,9 +424,9 @@ export default function HomePage({
               </div>
 
               {/* Earlier Internships Nodes */}
-              <div className="space-y-4 pt-1">
+              <div className="space-y-3.5 pt-1">
                 {t.experience.internships.map((intern) => (
-                  <div key={intern.company} className="relative space-y-1">
+                  <div key={intern.company} className="relative space-y-0.5">
                     <span
                       aria-hidden="true"
                       className="absolute -left-[28px] sm:-left-[36px] top-1.5 w-2 h-2 rounded-full bg-zinc-700 border border-zinc-500"
@@ -449,134 +448,157 @@ export default function HomePage({
                   </div>
                 ))}
               </div>
+
+              {/* University & Rocket Team Node */}
+              <div className="relative space-y-1 pt-3 border-t border-zinc-800/70">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[29px] sm:-left-[37px] top-[18px] w-2.5 h-2.5 rounded-full bg-zinc-900 border-2 border-amber-500/70"
+                />
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
+                  <div className="text-sm sm:text-base font-semibold text-zinc-100">
+                    {t.experience.education.university}
+                    <span className="text-xs font-normal text-zinc-400 ml-2">
+                      {t.experience.education.degree}
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono text-zinc-500 shrink-0">
+                    {t.experience.education.period}
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                  <span className="text-amber-400/90 font-medium">
+                    {t.experience.education.teamTitle}
+                  </span>
+                  <span className="text-zinc-600 mx-1.5">·</span>
+                  <span>{t.experience.education.teamSummary}</span>
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================
-            SLIDES 2..N: Project Slides (Modular)
+            SLIDES 2..N: Project Slides (Open Left-Rail Design)
         ======================================================== */}
         {t.projectSlides.map((project: ProjectSlide, pIndex: number) => {
-          const slideIndex = 2 + pIndex;
-          const isCurrent = activeSlide === slideIndex;
-
           return (
             <section
               key={project.id}
               id={`project-${project.id}`}
-              className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-center items-center pt-14 pb-20 px-6 sm:px-16 relative overflow-y-auto"
+              className="w-screen min-w-full h-full snap-start snap-always shrink-0 flex flex-col justify-between pt-14 pb-20 px-8 sm:px-16 max-w-5xl mx-auto relative overflow-y-auto"
             >
-              {/* Slide Card Container */}
-              <div className={`relative w-full max-w-4xl rounded-2xl border bg-gradient-to-br from-zinc-900/70 via-zinc-900/40 to-zinc-950/80 p-6 sm:p-10 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-500 ${
-                isCurrent ? 'border-amber-500/40 shadow-amber-500/10' : 'border-zinc-800/90'
-              }`}>
-                
-                {/* Ambient glow accent */}
-                <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl" />
-                <div className="pointer-events-none absolute -bottom-20 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+              <div className="my-auto w-full max-w-3xl mx-auto space-y-6 sm:space-y-7">
+                {/* Top Eyebrow Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-xs font-mono text-zinc-400">
+                  <Layers className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{project.tag}</span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="text-amber-400/90">
+                    {t.projects.projectCountPrefix} {String(pIndex + 1).padStart(2, '0')} / {String(t.projectSlides.length).padStart(2, '0')}
+                  </span>
+                </div>
 
-                <div className="space-y-6 sm:space-y-8 relative z-10">
-                  
-                  {/* Top Slide Meta Bar */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <span className="text-xs font-mono text-amber-400 font-semibold tracking-wider uppercase">
-                        {project.tag}
-                      </span>
+                {/* Vertical Left Rail */}
+                <div className="relative border-l border-zinc-800 ml-1.5 pl-6 sm:pl-8 space-y-6">
+                  {/* Primary Project Node */}
+                  <div className="relative space-y-3">
+                    <span
+                      aria-hidden="true"
+                      className="absolute -left-[29px] sm:-left-[37px] top-2 w-2.5 h-2.5 rounded-full bg-amber-400 ring-4 ring-amber-400/15"
+                    />
+
+                    <div>
+                      <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight flex items-baseline gap-2.5">
+                        <span>{project.title}</span>
+                        <span className="text-amber-400 text-base sm:text-xl font-normal font-mono opacity-80">
+                          / 0{pIndex + 1}
+                        </span>
+                      </h2>
+                      <p className="text-sm sm:text-base font-medium text-amber-400 mt-1">
+                        {project.subtitle}
+                      </p>
                     </div>
 
-                    <div className="flex items-center gap-2 font-mono text-xs text-zinc-500">
-                      <Layers className="w-3.5 h-3.5 text-zinc-400" />
-                      <span>{t.projects.projectCountPrefix} {String(pIndex + 1).padStart(2, '0')} / {String(t.projectSlides.length).padStart(2, '0')}</span>
-                    </div>
-                  </div>
-
-                  {/* Main Title & Subtitle */}
-                  <div className="space-y-3">
-                    <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-baseline gap-3">
-                      <span>{project.title}</span>
-                      <span className="text-amber-400 text-lg sm:text-2xl font-normal font-mono opacity-80">
-                        / 0{pIndex + 1}
-                      </span>
-                    </h2>
-                    <p className="text-lg sm:text-xl text-zinc-300 font-medium">
-                      {project.subtitle}
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-light max-w-3xl">
+                    <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                       {project.description}
                     </p>
                   </div>
 
-                  {/* Architecture Metrics Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-                    {project.metrics.map((metric) => (
-                      <div 
-                        key={metric.label}
-                        className="p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800/80 flex flex-col justify-between"
-                      >
-                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">{metric.label}</span>
-                        <span className="text-base sm:text-lg font-bold text-amber-400 mt-1">{metric.value}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {/* Architecture Metrics & Tech Stack Node */}
+                  <div className="relative space-y-3 pt-1">
+                    <span
+                      aria-hidden="true"
+                      className="absolute -left-[28px] sm:-left-[36px] top-2.5 w-2 h-2 rounded-full bg-zinc-700 border border-zinc-500"
+                    />
 
-                  {/* Tech Stack Badges */}
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500">
-                      <Cpu className="w-3.5 h-3.5 text-zinc-400" />
-                      <span>Core Stack & Protocols</span>
+                    {/* Inline Unboxed Metrics Strip */}
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs sm:text-sm">
+                      {project.metrics.map((metric, mIdx) => (
+                        <div key={metric.label} className="inline-flex items-baseline gap-1.5">
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">
+                            {metric.label}:
+                          </span>
+                          <span className="font-mono font-semibold text-amber-400">
+                            {metric.value}
+                          </span>
+                          {mIdx < project.metrics.length - 1 && (
+                            <span className="text-zinc-700 pl-3 hidden sm:inline">·</span>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex flex-wrap gap-2 font-mono text-xs">
+
+                    {/* Compact Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
                       {project.tech.map((techItem) => (
-                        <span 
+                        <span
                           key={techItem}
-                          className="px-2.5 py-1 rounded-md bg-zinc-800/60 border border-zinc-700/50 text-zinc-200"
+                          className="px-2.5 py-0.5 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-300"
                         >
                           {techItem}
                         </span>
                       ))}
                     </div>
-                  </div>
 
-                  {/* Action Bar */}
-                  <div className="pt-2 flex flex-wrap items-center gap-4">
-                    {project.caseStudyUrl ? (
-                      <>
-                        <Link
-                          to={project.caseStudyUrl}
-                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold text-sm transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30"
+                    {/* Action Bar */}
+                    <div className="pt-2 flex flex-wrap items-center gap-4">
+                      {project.caseStudyUrl ? (
+                        <>
+                          <Link
+                            to={project.caseStudyUrl}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold text-sm transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30"
+                          >
+                            <Sparkles className="w-4 h-4" />
+                            <span>{lang === 'tr' ? `${project.title}'a Git` : `Visit ${project.title}`}</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                          {project.externalUrl && (
+                            <a
+                              href={project.externalUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white font-medium text-sm transition-colors"
+                            >
+                              <ExternalLink className="w-4 h-4 text-amber-400" />
+                              <span>{lang === 'tr' ? 'Canlı Site' : 'Live Site'}</span>
+                            </a>
+                          )}
+                        </>
+                      ) : project.externalUrl ? (
+                        <a
+                          href={project.externalUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold text-sm transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30"
                         >
                           <Sparkles className="w-4 h-4" />
                           <span>{lang === 'tr' ? `${project.title}'a Git` : `Visit ${project.title}`}</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                        {project.externalUrl && (
-                          <a
-                            href={project.externalUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-white font-medium text-sm transition-all hover:border-zinc-600 shadow-md"
-                          >
-                            <ExternalLink className="w-4 h-4 text-amber-400" />
-                            <span>{lang === 'tr' ? 'Canlı Site' : 'Live Site'}</span>
-                          </a>
-                        )}
-                      </>
-                    ) : project.externalUrl ? (
-                      <a
-                        href={project.externalUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold text-sm transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30"
-                      >
-                        <Sparkles className="w-4 h-4" />
-                        <span>{lang === 'tr' ? `${project.title}'a Git` : `Visit ${project.title}`}</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    ) : null}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
-
                 </div>
               </div>
             </section>

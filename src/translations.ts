@@ -70,6 +70,13 @@ export const translations = {
           summary: "Built operator GUIs for embedded defense systems using Qt and C++.",
         },
       ],
+      education: {
+        university: "Yildiz Technical University",
+        degree: "Mechatronics Engineering",
+        period: "2025 · Istanbul",
+        teamTitle: "Yildiz Rocket Team",
+        teamSummary: "Team Leader & Avionics Lead — Spaceport America Cup Finalist (50+ team, 20,000 ft).",
+      },
     },
     hero: {
       badge: "Software Engineer — IoT, Embedded & Full-Stack Systems",
@@ -190,6 +197,13 @@ export const translations = {
           summary: "Savunma sanayii gömülü sistemleri için Qt ve C++ ile operatör arayüzleri geliştirdi.",
         },
       ],
+      education: {
+        university: "Yıldız Teknik Üniversitesi",
+        degree: "Mekatronik Mühendisliği",
+        period: "2025 · İstanbul",
+        teamTitle: "Yıldız Roket Takımı",
+        teamSummary: "Takım Kaptanı & Aviyonik Lideri — Spaceport America Cup Finalisti (50+ ekip, 20.000 ft).",
+      },
     },
     hero: {
       badge: "Yazılım Mühendisi — IoT, Gömülü Sistemler ve Full-Stack",
