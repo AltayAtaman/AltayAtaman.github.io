@@ -76,6 +76,8 @@ export const translations = {
         period: "2025 · Istanbul",
         teamTitle: "Yildiz Rocket Team",
         teamSummary: "Team Leader & Avionics Lead — Spaceport America Cup Finalist (50+ team, 20,000 ft).",
+        thesisTitle: "TÜBİTAK 2209-A Graduation Project",
+        thesisSummary: "Modeled spacecraft atmospheric descent dynamics and flight control systems in MATLAB/Simulink.",
       },
     },
     hero: {
@@ -204,6 +206,8 @@ export const translations = {
         period: "2025 · İstanbul",
         teamTitle: "Yıldız Roket Takımı",
         teamSummary: "Takım Kaptanı & Aviyonik Lideri — Spaceport America Cup Finalisti (50+ ekip, 20.000 ft).",
+        thesisTitle: "TÜBİTAK 2209-A Bitirme Projesi",
+        thesisSummary: "Uzay araçlarının atmosferik iniş dinamikleri ve kontrol sistemleri MATLAB/Simulink ortamında modellendi.",
       },
     },
     hero: {

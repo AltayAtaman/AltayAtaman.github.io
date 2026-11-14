@@ -490,6 +490,13 @@ export default function HomePage({
                   <span className="text-zinc-600 mx-1.5">·</span>
                   <span>{t.experience.education.teamSummary}</span>
                 </p>
+                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                  <span className="text-amber-400/90 font-medium">
+                    {t.experience.education.thesisTitle}
+                  </span>
+                  <span className="text-zinc-600 mx-1.5">·</span>
+                  <span>{t.experience.education.thesisSummary}</span>
+                </p>
               </div>
             </div>
           </div>
