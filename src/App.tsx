@@ -73,6 +73,14 @@ export default function App() {
   const [latency, setLatency] = useState(16);
 
   useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title =
+      lang === 'tr'
+        ? 'Ismail Altay Ataman — Yazılım Mühendisi | IoT, Gömülü Sistemler ve Full-Stack'
+        : 'Ismail Altay Ataman — Software Engineer | IoT & Full-Stack Systems';
+  }, [lang]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setLatency(Math.floor(14 + Math.random() * 6));
     }, 2500);

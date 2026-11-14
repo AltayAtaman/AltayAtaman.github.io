@@ -156,6 +156,15 @@ export default function HomePage({
       } else if (e.key === 'End') {
         e.preventDefault();
         scrollToSlide(totalSlides - 1);
+      } else if (
+        !e.ctrlKey &&
+        !e.metaKey &&
+        !e.altKey &&
+        e.key >= '1' &&
+        e.key <= String(Math.min(totalSlides, 9))
+      ) {
+        e.preventDefault();
+        scrollToSlide(Number(e.key) - 1);
       }
     };
 
@@ -252,13 +261,21 @@ export default function HomePage({
 
         <div className="h-3 w-[1px] bg-zinc-800" />
 
-        {/* Slide Counter */}
+        {/* Slide Counter & Active Label */}
         <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
           <span className="text-amber-400 font-bold">
             {String(activeSlide + 1).padStart(2, '0')}
           </span>
           <span className="text-zinc-600">/</span>
           <span>{String(totalSlides).padStart(2, '0')}</span>
+          {slides[activeSlide]?.label && (
+            <>
+              <span className="text-zinc-600">·</span>
+              <span className="text-zinc-200 font-medium whitespace-nowrap">
+                {slides[activeSlide].label}
+              </span>
+            </>
+          )}
         </div>
 
         <span className="hidden md:inline-block text-[10px] font-mono text-zinc-500 pl-1 border-l border-zinc-800">
